@@ -1,3 +1,5 @@
+/////// INITIALISIERUNG ////////
+
 const ballElement = document.querySelector('#gameball');
 const boardleftElement = document.querySelector('#board1')
 const boardrightElement = document.querySelector('#board2')
@@ -6,13 +8,16 @@ const ball ={
     element: ballElement,
     xSpeed: 0,
     ySpeed: 0,
-    left: 0,
-    top: 0
+    left: 590,
+    top: 340
 }
 const gameAreaWidth = 1200;
 const gameAreaHeight = 700;
 let scoreleft = 0;
 let scoreright = 0;
+
+
+/////// KEY DOWN / ACCELERATION ////////
 
 document.addEventListener("keydown", keyPressed);
 
@@ -31,26 +36,29 @@ function keyPressed(event) {
     }
 }
 
-    function accelerateRight() {
-        if (ball.xSpeed < 6) {
-            ball.xSpeed += 1.5
-        }
+function accelerateRight() {
+    if (ball.xSpeed < 6) {
+        ball.xSpeed += 1.5
     }
-    function accelerateLeft() {
-        if (ball.xSpeed > -6) {
-            ball.xSpeed -= 1.5
-        }
+}
+function accelerateLeft() {
+    if (ball.xSpeed > -6) {
+        ball.xSpeed -= 1.5
     }
-    function accelerateTop() {
-        if (ball.ySpeed > -6) {
-            ball.ySpeed -= 1.5
-        }
+}
+function accelerateTop() {
+    if (ball.ySpeed > -6) {
+        ball.ySpeed -= 1.5
     }
-    function accelerateBottom() {
-        if (ball.ySpeed < 6) {
-            ball.ySpeed += 1.5
-        }
+}
+function accelerateBottom() {
+    if (ball.ySpeed < 6) {
+        ball.ySpeed += 1.5
     }
+}
+
+
+/////// KEY UP / DECELERATION ////////
 
 document.addEventListener("keyup", keyletgo);
 
@@ -68,18 +76,21 @@ function keyletgo(event) {
         decelerateBottom();
     }
 }
-    function decelerateRight() {
-        ball.xSpeed = 0
-    }
-    function decelerateLeft() {
-        ball.xSpeed = 0
-    }
-    function decelerateTop() {
-        ball.ySpeed = 0
-    }
-    function decelerateBottom() {
-        ball.ySpeed = 0
-    }
+function decelerateRight() {
+    ball.xSpeed = 0
+}
+function decelerateLeft() {
+    ball.xSpeed = 0
+}
+function decelerateTop() {
+    ball.ySpeed = 0
+}
+function decelerateBottom() {
+    ball.ySpeed = 0
+}
+
+
+/////// GAME LOOP ////////
 
 setInterval(function() {
     ball.left += ball.xSpeed;
@@ -118,6 +129,8 @@ setInterval(function() {
         boardrightElement.innerHTML = scoreright;
         
     }
+
+
     ball.element.style.top = ball.top + "px"; 
     ball.element.style.left = ball.left + "px";
 }, 15);
