@@ -51,9 +51,41 @@
 }
 
 .middleline {
-    background-color: black;
+    background-color: white;
     height: 700px;
-    width: 5px;
+    width: 3px;
     position: absolute;
-    left: 718px;
+    left: 600px;
+}
+
+.middlecircle {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    top: 325px;
+    left: 574px;
+    background opacity: 0;
+    border-radius: 50%;
+    border: 3px solid white;
+
+}
+
+.torcircleleft {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    top: 245px;
+    left: -100px;
+    border: 3px solid white;
+    border-radius: 50%;
+}
+
+.torcircleright {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    top: 245px;
+    left: 1100px;
+    border: 3px solid white;
+    border-radius: 50%;
 }
