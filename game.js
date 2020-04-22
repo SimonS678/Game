@@ -1,10 +1,10 @@
 /////// INITIALISIERUNG ////////
 
-const ballElement = document.querySelector('#gameball');
+const ballElement = document.querySelector('#gameplayer');
 const boardleftElement = document.querySelector('#board1')
 const boardrightElement = document.querySelector('#board2')
 
-const ball ={
+const player1 ={
     element: ballElement,
     xSpeed: 0,
     ySpeed: 0,
@@ -37,23 +37,23 @@ function keyPressed(event) {
 }
 
 function accelerateRight() {
-    if (ball.xSpeed < 6) {
-        ball.xSpeed += 1.5
+    if (player1.xSpeed < 6) {
+        player1.xSpeed += 1.5
     }
 }
 function accelerateLeft() {
-    if (ball.xSpeed > -6) {
-        ball.xSpeed -= 1.5
+    if (player1.xSpeed > -6) {
+        player1.xSpeed -= 1.5
     }
 }
 function accelerateTop() {
-    if (ball.ySpeed > -6) {
-        ball.ySpeed -= 1.5
+    if (player1.ySpeed > -6) {
+        player1.ySpeed -= 1.5
     }
 }
 function accelerateBottom() {
-    if (ball.ySpeed < 6) {
-        ball.ySpeed += 1.5
+    if (player1.ySpeed < 6) {
+        player1.ySpeed += 1.5
     }
 }
 
@@ -77,62 +77,62 @@ function keyletgo(event) {
     }
 }
 function decelerateRight() {
-    ball.xSpeed = 0
+    player1.xSpeed = 0
 }
 function decelerateLeft() {
-    ball.xSpeed = 0
+    player1.xSpeed = 0
 }
 function decelerateTop() {
-    ball.ySpeed = 0
+    player1.ySpeed = 0
 }
 function decelerateBottom() {
-    ball.ySpeed = 0
+    player1.ySpeed = 0
 }
 
 
 /////// GAME LOOP ////////
 
 setInterval(function() {
-    ball.left += ball.xSpeed;
+    player1.left += player1.xSpeed;
 
-    if (ball.left < 0) {
-        ball.left = 0;
-        ball.xSpeed
+    if (player1.left < 0) {
+        player1.left = 0;
+        player1.xSpeed
     }
-    if (ball.left > gameAreaWidth - 20) {
-        ball.left = gameAreaWidth - 20;
-        ball.xSpeed = 0;
+    if (player1.left > gameAreaWidth - 20) {
+        player1.left = gameAreaWidth - 20;
+        player1.xSpeed = 0;
     }
     
-    ball.top += ball.ySpeed;
+    player1.top += player1.ySpeed;
     
-    if (ball.top < 0) {
-        ball.top = 0;
-        ball.ySpeed
+    if (player1.top < 0) {
+        player1.top = 0;
+        player1.ySpeed
     }
-    if (ball.top > gameAreaHeight - 20) {
-        ball.top = gameAreaHeight - 20;
-        ball.ySpeed = 0;
+    if (player1.top > gameAreaHeight - 20) {
+        player1.top = gameAreaHeight - 20;
+        player1.ySpeed = 0;
     }
-    if (ball.left == gameAreaWidth - 20 && ball.top < 378 && ball.top > 322 ) {
+    if (player1.left == gameAreaWidth - 20 && player1.top < 378 && player1.top > 322 ) {
         console.log("goal")
-        ball.top = 340;
-        ball.left = 600;
+        player1.top = 340;
+        player1.left = 600;
         scoreleft += 1;
         boardleftElement.innerHTML = scoreleft;
     }
-    if (ball.left == ball.left < 0 && ball.top < 378 && ball.top > 322 ) {
+    if (player1.left == player1.left < 0 && player1.top < 378 && player1.top > 322 ) {
         console.log("goal")
-        ball.top = 340;
-        ball.left = 600;
+        player1.top = 340;
+        player1.left = 600;
         scoreright += 1;
         boardrightElement.innerHTML = scoreright;
         
     }
 
 
-    ball.element.style.top = ball.top + "px"; 
-    ball.element.style.left = ball.left + "px";
+    player1.element.style.top = player1.top + "px"; 
+    player1.element.style.left = player1.left + "px";
 }, 15);
 
     
