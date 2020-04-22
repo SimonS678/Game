@@ -4,6 +4,7 @@
     height: 700px;
     margin: 40px auto 0px auto;
     position: relative;
+    z-index: -1;
     border: 1px solid black;
 
 }
@@ -48,6 +49,11 @@
     left: 1390px;
     font-size: 80px;
 }
-.all {
-    position: relative;
+
+.middleline {
+    background-color: black;
+    height: 700px;
+    width: 5px;
+    position: absolute;
+    left: 718px;
 }
