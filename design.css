@@ -18,3 +18,36 @@
     left: 590px;
 
 }
+.goalleft {
+    background-color: black;
+    width: 5px;
+    height: 60px;
+    position: absolute;
+    top: 320px;
+    left: -2px;
+
+}
+.goalright {
+    background-color: black;
+    width: 5px;
+    height: 60px;
+    position: absolute;
+    top: 320px;
+    left: 1198px;
+
+}
+.scoreboard1 {
+    position: absolute;
+    top: 10px;
+    font-size: 80px;
+}
+
+.scoreboard2 {
+    position: absolute;
+    top: 10px;
+    left: 1390px;
+    font-size: 80px;
+}
+.all {
+    position: relative;
+}
