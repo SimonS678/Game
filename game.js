@@ -1,15 +1,24 @@
 /////// INITIALISIERUNG ////////
 
-const ballElement = document.querySelector('#gameplayer');
+const player1Element = document.querySelector('#gameplayer1');
+const player2Element = document.querySelector('#gameplayer2')
 const boardleftElement = document.querySelector('#board1')
 const boardrightElement = document.querySelector('#board2')
+const winElement = document.querySelector('#win')
 
 const player1 ={
-    element: ballElement,
+    element: player1Element,
     xSpeed: 0,
     ySpeed: 0,
     left: 590,
     top: 340
+}
+const player2 ={
+    element: player2Element,
+    xSpeed: 0,
+    ySpeed: 0,
+    left: 590,
+    top: 300
 }
 const gameAreaWidth = 1200;
 const gameAreaHeight = 700;
@@ -23,37 +32,50 @@ document.addEventListener("keydown", keyPressed);
 
 function keyPressed(event) {
     if (event.keyCode == 39) {
-        accelerateRight();
+        accelerateRight(player1);
     };
     if (event.keyCode == 37) {
-        accelerateLeft();
+        accelerateLeft(player1);
     };
     if (event.keyCode == 38) {
-        accelerateTop();
+        accelerateTop(player1);
     }
     if (event.keyCode == 40) {
-        accelerateBottom();
+        accelerateBottom(player1);
     }
+    if (event.keyCode == 68) {
+        accelerateRight(player2)
+    }
+    if (event.keyCode == 65) {
+        accelerateLeft(player2)
+    }
+    if (event.keyCode == 87) {
+        accelerateTop(player2)
+    } 
+    if (event.keyCode == 83) {
+        accelerateBottom(player2)
+    }
+
 }
 
-function accelerateRight() {
-    if (player1.xSpeed < 6) {
-        player1.xSpeed += 1.5
+function accelerateRight(activeplayer) {
+    if (activeplayer.xSpeed < 6) {
+        activeplayer.xSpeed += 1.5
     }
 }
-function accelerateLeft() {
-    if (player1.xSpeed > -6) {
-        player1.xSpeed -= 1.5
+function accelerateLeft(activeplayer) {
+    if (activeplayer.xSpeed > -6) {
+        activeplayer.xSpeed -= 1.5
     }
 }
-function accelerateTop() {
-    if (player1.ySpeed > -6) {
-        player1.ySpeed -= 1.5
+function accelerateTop(activeplayer) {
+    if (activeplayer.ySpeed > -6) {
+        activeplayer.ySpeed -= 1.5
     }
 }
-function accelerateBottom() {
-    if (player1.ySpeed < 6) {
-        player1.ySpeed += 1.5
+function accelerateBottom(activeplayer) {
+    if (activeplayer.ySpeed < 6) {
+        activeplayer.ySpeed += 1.5
     }
 }
 
@@ -64,29 +86,54 @@ document.addEventListener("keyup", keyletgo);
 
 function keyletgo(event) {
     if (event.keyCode == 39) {
-        decelerateRight();
+        decelerateRight(player1);
     };
     if (event.keyCode == 37) {
-        decelerateLeft();
+        decelerateLeft(player1);
     };
     if (event.keyCode == 38) {
-        decelerateTop();
+        decelerateTop(player1);
     }
     if (event.keyCode == 40) {
-        decelerateBottom();
+        decelerateBottom(player1);
     }
+    if (event.keycode == 68) {
+        decelerateRight(player2)
+    }
+    if (event.keyCode == 65) {
+        decelerateLeft(player2)
+    }
+    if (event.keyCode == 87) {
+        decelerateTop(player2)
+    } 
+    if (event.keyCode == 83) {
+        decelerateBottom(player2)
+    }
+
 }
-function decelerateRight() {
-    player1.xSpeed = 0
+function decelerateRight(activeplayer) {
+    activeplayer.xSpeed = 0
 }
-function decelerateLeft() {
-    player1.xSpeed = 0
+function decelerateLeft(activeplayer) {
+    activeplayer.xSpeed = 0
 }
-function decelerateTop() {
-    player1.ySpeed = 0
+function decelerateTop(activeplayer) {
+    activeplayer.ySpeed = 0
 }
-function decelerateBottom() {
-    player1.ySpeed = 0
+function decelerateBottom(activeplayer) {
+    activeplayer.ySpeed = 0
+}
+function decelerateRight(activeplayer) {
+    activeplayer.xSpeed = 0
+}
+function decelerateLeft(activeplayer) {
+    activeplayer.xSpeed = 0
+}
+function decelerateTop(activeplayer) {
+    activeplayer.ySpeed = 0
+}
+function decelerateBottom(activeplayer) {
+    activeplayer.ySpeed = 0
 }
 
 
@@ -94,6 +141,7 @@ function decelerateBottom() {
 
 setInterval(function() {
     player1.left += player1.xSpeed;
+    player2.left += player2.xSpeed;
 
     if (player1.left < 0) {
         player1.left = 0;
@@ -103,8 +151,17 @@ setInterval(function() {
         player1.left = gameAreaWidth - 20;
         player1.xSpeed = 0;
     }
+    if (player2.left < 0) {
+        player2.left = 0;
+        player2.xSpeed
+    }
+    if (player2.left > gameAreaWidth - 20) {
+        player2.left = gameAreaWidth - 20;
+        player2.xSpeed = 0;
+    }
     
     player1.top += player1.ySpeed;
+    player2.top += player2.ySpeed;
     
     if (player1.top < 0) {
         player1.top = 0;
@@ -114,25 +171,56 @@ setInterval(function() {
         player1.top = gameAreaHeight - 20;
         player1.ySpeed = 0;
     }
-    if (player1.left == gameAreaWidth - 20 && player1.top < 378 && player1.top > 322 ) {
-        console.log("goal")
-        player1.top = 340;
-        player1.left = 600;
+    if (player2.top < 0) {
+        player2.top = 0;
+        player2.ySpeed
+    }
+    if (player2.top > gameAreaHeight - 20) {
+        player2.top = gameAreaHeight - 20;
+        player2.ySpeed = 0;
+    }
+
+
+    /// TOR?
+    if (player2.left == gameAreaWidth - 20 && player2.top < 378 && player2.top > 322 ) {
+        console.log("goalright")
+        player2.top = 340;
+        player2.left = 600;
         scoreleft += 1;
-        boardleftElement.innerHTML = scoreleft;
+        
     }
     if (player1.left == player1.left < 0 && player1.top < 378 && player1.top > 322 ) {
-        console.log("goal")
+        console.log("goalleft")
         player1.top = 340;
         player1.left = 600;
         scoreright += 1;
-        boardrightElement.innerHTML = scoreright;
-        
+
+    }
+    if (scoreleft == 6) {
+        player2.top = 340;
+        player2.left = 600;
+        scoreleft = 0;
+        winElement.innerHTML = 'Player 2 Wins!'
+    }
+
+    if (scoreright == 6) {
+        player1.top = 340;
+        player1.left = 600;
+        scoreright = 0;
+        winElement.innerHTML = 'Player 1 Wins!'
     }
 
 
     player1.element.style.top = player1.top + "px"; 
     player1.element.style.left = player1.left + "px";
+    player2.element.style.top = player2.top + "px"; 
+    player2.element.style.left = player2.left + "px";
+    boardrightElement.innerHTML = scoreright;
+    boardleftElement.innerHTML = scoreleft;
+
+
+
+    
 }, 15);
 
     
