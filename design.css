@@ -40,13 +40,14 @@
 .scoreboard1 {
     position: absolute;
     top: 10px;
+    left: -50px;
     font-size: 80px;
 }
 
 .scoreboard2 {
     position: absolute;
     top: 10px;
-    left: 1390px;
+    left: 1210px;
     font-size: 80px;
 }
 
