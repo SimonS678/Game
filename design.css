@@ -1,3 +1,14 @@
+body {
+    background-image: url("img/pitchback.jpg");
+}
+
+
+
+
+
+
+
+
 .pitch {
     background-color: lightgreen;
     width: 1200px;
@@ -6,8 +17,21 @@
     position: relative;
     z-index: -1;
     border: 1px solid black;
-
 }
+
+
+.ball {
+    background-color: rgb(0, 0, 0);
+    box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.6);
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    position: absolute;
+    top: 340px;
+    left: 593px;
+    border: 1px solid white;
+}
+
 .player1 {
     background-color: gray;
     box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.6);
@@ -16,7 +40,7 @@
     border-radius: 10px;
     position: absolute;
     top: 340px;
-    left: 590px;
+    left: 690px;
 }
 
 .player2 {
@@ -26,8 +50,8 @@
     height: 20px;
     border-radius: 10px;
     position: absolute;
-    top: 300px;
-    left: 590px;
+    top: 340px;
+    left: 490px;
 
 }
 .goalleft {
@@ -92,22 +116,40 @@
 
 }
 
+.torcircle-container-left {
+    height: 210px;
+    width: 110px;
+    position: absolute;
+    top: 245px;
+    left: 0px;
+    overflow: hidden;
+}
+
 .torcircleleft {
     height: 200px;
     width: 200px;
     position: absolute;
-    top: 245px;
+    top: 0px;
     left: -100px;
     border: 3px solid white;
     border-radius: 50%;
+}
+
+.torcircle-container-right {
+    height: 210px;
+    width: 100px;
+    position: absolute;
+    top: 245px;
+    left: 1100px;   
+    overflow: hidden;
 }
 
 .torcircleright {
     height: 200px;
     width: 200px;
     position: absolute;
-    top: 245px;
-    left: 1100px;
+    top: 0px;
+    left: 0px;
     border: 3px solid white;
     border-radius: 50%;
 }

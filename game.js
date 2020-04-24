@@ -10,15 +10,15 @@ const player1 ={
     element: player1Element,
     xSpeed: 0,
     ySpeed: 0,
-    left: 590,
+    left: 490,
     top: 340
 }
 const player2 ={
     element: player2Element,
     xSpeed: 0,
     ySpeed: 0,
-    left: 590,
-    top: 300
+    left: 690,
+    top: 340
 }
 const gameAreaWidth = 1200;
 const gameAreaHeight = 700;
